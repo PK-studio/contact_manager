@@ -1,20 +1,19 @@
 import React from "react";
 import { ContactList } from "./ContactList";
-import { render, cleanup } from "@testing-library/react";
+import { render, cleanup, fireEvent } from "@testing-library/react";
 
 describe("Contact list", () => {
   const renderComponent = (partialContact = {}) => {
-    const contacts = [
-      {
-        id: "test_contact_id",
-        name: "Test name",
-        email: "test email",
-        modified: "01-01-0001 01:01",
-        created: "00-00-0000 00:00",
-        ...partialContact
-      }
-    ];
-    return render(<ContactList contacts={contacts} />);
+    const contact = {
+      id: "test_contact_id",
+      name: "Test name",
+      email: "test email",
+      modified: "01-01-0001 01:01",
+      created: "00-00-0000 00:00",
+      ...partialContact
+    };
+
+    return render(<ContactList contacts={[contact]} />);
   };
 
   afterEach(cleanup);
@@ -44,5 +43,21 @@ describe("Contact list", () => {
   it("contacts contain edit button", () => {
     const { getByText } = renderComponent();
     expect(getByText("Edit")).toBeTruthy();
+  });
+
+  it("removes contact on delete click", () => {
+    const name = "Name to remove";
+    const { container, getByText } = renderComponent({ name });
+    const displayedName = getByText(name);
+    expect(container.contains(displayedName)).toBeTruthy();
+    fireEvent.click(getByText("Delete"));
+    expect(container.contains(displayedName)).toBeFalsy();
+  });
+
+  it("adds contact on add contact click", () => {
+    const { getByText, getAllByText } = renderComponent();
+    expect(getAllByText("Edit")).toHaveLength(1);
+    fireEvent.click(getByText("Add contact"));
+    expect(getAllByText("Edit")).toHaveLength(2);
   });
 });
