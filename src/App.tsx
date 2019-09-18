@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import { ContactList } from "./modules/contactList/ContactList";
 
 class App extends Component {
   render() {
