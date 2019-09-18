@@ -1,20 +1,13 @@
 # Contact Manager
 
-## Features to implement
+## Implemented Features
 
 - List Contacts
 - View Contact
 - Add Contact
 - Delete Contact
 - Edit Contact
-- Clean routing i.e '/contact/:id'
-- Use material-ui for components
-
-### Bonuses
-
-- Use [xstate](https://xstate.js.org/docs) to manage app state.
-- Connect to the graphql endpoint http://localhost:3001 by using create-react-app proxy feature
-- Use the graphql endpoint to get/create/update/delete
+- Material-ui for components
 
 ### Contact
 
