@@ -5,10 +5,11 @@ import { ContactList } from "./modules/contactList/ContactList";
 
 const contacts = [
   {
-    name: "Test name",
-    email: "test email",
-    modified: "01-01-0001 01:01",
-    created: "00-00-0000 00:00"
+    id: "John_31_01_2018_15_04",
+    name: "John Smith",
+    email: "john@smith.com",
+    modified: "31-01-2018 15:04",
+    created: "31-01-2018 15:04"
   }
 ];
 

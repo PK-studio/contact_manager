@@ -1,11 +1,12 @@
 import React from "react";
 import { ContactList } from "./ContactList";
-import { render } from "@testing-library/react";
+import { render, cleanup } from "@testing-library/react";
 
 describe("Contact list", () => {
   const renderComponent = (partialContact = {}) => {
     const contacts = [
       {
+        id: "test_contact_id",
         name: "Test name",
         email: "test email",
         modified: "01-01-0001 01:01",
@@ -15,6 +16,8 @@ describe("Contact list", () => {
     ];
     return render(<ContactList contacts={contacts} />);
   };
+
+  afterEach(cleanup);
 
   it("displays provided contacts", () => {
     const name = "Test contact name";

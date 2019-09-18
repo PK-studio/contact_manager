@@ -40,6 +40,11 @@
   width: 1024px;
 }
 
+.under-list {
+  text-align: right;
+  margin-top: 10px;
+}
+
 .contact-list-row {
   padding: 0;
   display: flex;
@@ -48,9 +53,9 @@
 }
 
 .contact-list-buttons {
-  padding: 10px;
+  padding: 12px 0;
   margin: 0;
-  width: 200px;
+  width: 170px;
   display: flex;
   justify-content: space-between;
 }
@@ -64,4 +69,12 @@
   border: 2px solid #000;
   box-shadow: 1px 1xp;
   padding: 10px;
+}
+
+.contact-form > div {
+  width: 100%;
+}
+
+.contact-editor-field {
+  margin: 0 50px;
 }
