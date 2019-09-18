@@ -22,14 +22,15 @@ describe("Contact list", () => {
     expect(getByText(name)).toBeTruthy();
   });
 
-  it("contacts contain view button", () => {
-    const { getByText } = renderComponent();
-    expect(getByText("View")).toBeTruthy();
+  it("displays provided email", () => {
+    const email = "Test.contact@email.com";
+    const { getByText } = renderComponent({ email });
+    expect(getByText(email)).toBeTruthy();
   });
 
   it("contacts contain add button", () => {
     const { getByText } = renderComponent();
-    expect(getByText("Add")).toBeTruthy();
+    expect(getByText("Add contact")).toBeTruthy();
   });
 
   it("contacts contain delete button", () => {

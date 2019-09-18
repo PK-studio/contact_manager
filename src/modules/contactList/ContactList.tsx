@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
+import { ContactEitor } from "../contactEditor/ContactEditor";
 
 type ContactListProps = {
   contacts: {
@@ -11,17 +12,29 @@ type ContactListProps = {
 };
 
 export const ContactList = ({ contacts }: ContactListProps) => {
+  const [isEditorOpen, setEditor] = useState(false);
+
   return (
-    <div className={"contact-list"}>
+    <div className="contact-list">
+      <Button variant="contained">Add contact</Button>
       {contacts.map(contact => (
         <div key={contact.created} className="contact-list-row">
           <p>{contact.name}</p>
-          <Button variant="contained">View</Button>
-          <Button variant="contained">Add</Button>
-          <Button variant="contained">Delete</Button>
-          <Button variant="contained">Edit</Button>
+          <p>{contact.email}</p>
+          <div className={"contact-list-buttons"}>
+            <Button variant="contained">Delete</Button>
+            <Button
+              variant="contained"
+              onClick={() => {
+                setEditor(true);
+              }}
+            >
+              Edit
+            </Button>
+          </div>
         </div>
       ))}
+      <ContactEitor isOpen={isEditorOpen} setEditor={setEditor} />
     </div>
   );
 };
