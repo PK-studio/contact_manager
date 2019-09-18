@@ -1,8 +1,16 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 
-export const ContactList = ({ contacts } = {}) => {
+type ContactListProps = {
+  contacts: {
+    name: string;
+    email: string;
+    modified: string;
+    created: string;
+  }[];
+};
+
+export const ContactList = ({ contacts }: ContactListProps) => {
   return (
     <div className={"contact-list"}>
       {contacts.map(contact => (
@@ -16,15 +24,4 @@ export const ContactList = ({ contacts } = {}) => {
       ))}
     </div>
   );
-};
-
-ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      email: PropTypes.string,
-      modified: PropTypes.string,
-      created: PropTypes.string
-    })
-  )
 };
